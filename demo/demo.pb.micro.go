@@ -34,32 +34,32 @@ var _ context.Context
 var _ client.Option
 var _ server.Option
 
-// Api Endpoints for Area service
+// Api Endpoints for Demo service
 
-func NewAreaEndpoints() []*api.Endpoint {
+func NewDemoEndpoints() []*api.Endpoint {
 	return []*api.Endpoint{}
 }
 
-// Client API for Area service
+// Client API for Demo service
 
-type AreaService interface {
+type DemoService interface {
 	Hello(ctx context.Context, in *Say, opts ...client.CallOption) (*common.Response, error)
 }
 
-type areaService struct {
+type demoService struct {
 	c    client.Client
 	name string
 }
 
-func NewAreaService(name string, c client.Client) AreaService {
-	return &areaService{
+func NewDemoService(name string, c client.Client) DemoService {
+	return &demoService{
 		c:    c,
 		name: name,
 	}
 }
 
-func (c *areaService) Hello(ctx context.Context, in *Say, opts ...client.CallOption) (*common.Response, error) {
-	req := c.c.NewRequest(c.name, "Area.Hello", in)
+func (c *demoService) Hello(ctx context.Context, in *Say, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "Demo.Hello", in)
 	out := new(common.Response)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
@@ -68,27 +68,27 @@ func (c *areaService) Hello(ctx context.Context, in *Say, opts ...client.CallOpt
 	return out, nil
 }
 
-// Server API for Area service
+// Server API for Demo service
 
-type AreaHandler interface {
+type DemoHandler interface {
 	Hello(context.Context, *Say, *common.Response) error
 }
 
-func RegisterAreaHandler(s server.Server, hdlr AreaHandler, opts ...server.HandlerOption) error {
-	type area interface {
+func RegisterDemoHandler(s server.Server, hdlr DemoHandler, opts ...server.HandlerOption) error {
+	type demo interface {
 		Hello(ctx context.Context, in *Say, out *common.Response) error
 	}
-	type Area struct {
-		area
+	type Demo struct {
+		demo
 	}
-	h := &areaHandler{hdlr}
-	return s.Handle(s.NewHandler(&Area{h}, opts...))
+	h := &demoHandler{hdlr}
+	return s.Handle(s.NewHandler(&Demo{h}, opts...))
 }
 
-type areaHandler struct {
-	AreaHandler
+type demoHandler struct {
+	DemoHandler
 }
 
-func (h *areaHandler) Hello(ctx context.Context, in *Say, out *common.Response) error {
-	return h.AreaHandler.Hello(ctx, in, out)
+func (h *demoHandler) Hello(ctx context.Context, in *Say, out *common.Response) error {
+	return h.DemoHandler.Hello(ctx, in, out)
 }

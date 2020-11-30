@@ -5,7 +5,7 @@ import "github.com/cargod-bj/b2c-proto-common/common/common.proto";
 
 option go_package = "github.com/cargod-bj/b2c-store-api/area";
 
-service Area {
+service Demo {
   rpc Hello(Say) returns (common.Response) {}
 
 }
