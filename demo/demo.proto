@@ -1,13 +1,11 @@
 syntax = "proto3";
 package dealer;
 
-import "github.com/cargod-bj/b2c-proto-common/common/common.proto";
 
-option go_package = "github.com/cargod-bj/b2c-store-api/area";
+option go_package = "github.com/cargod-bj/b2c-gateway-api/demo";
 
 service Demo {
-  rpc Hello(Say) returns (common.Response) {}
-
+  rpc Hello(Say) returns (Result) {}
 }
 
 
