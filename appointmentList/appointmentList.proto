@@ -1,0 +1,19 @@
+syntax = "proto3";
+package appointmentList;
+import "google/protobuf/any.proto";
+import "github.com/cargod-bj/b2c-proto-common/common/common.proto";
+option go_package = "github.com/cargod-bj/b2c-gateway-api/appointmentList";
+
+service Demo {
+  rpc GetListForSMS(SmsCond) returns (Response) {}
+}
+
+
+message SmsCond{
+uint32 sendInterval = 1;
+}
+message Response {
+  string msg = 1;
+  google.protobuf.Any data = 3;
+  string code = 2;
+}
