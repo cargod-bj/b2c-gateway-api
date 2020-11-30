@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.22.0
 // 	protoc        v3.11.4
-// source: demo/area.proto
+// source: demo/demo.proto
 
 package area
 
@@ -37,7 +37,7 @@ type Say struct {
 func (x *Say) Reset() {
 	*x = Say{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_demo_area_proto_msgTypes[0]
+		mi := &file_demo_demo_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -50,7 +50,7 @@ func (x *Say) String() string {
 func (*Say) ProtoMessage() {}
 
 func (x *Say) ProtoReflect() protoreflect.Message {
-	mi := &file_demo_area_proto_msgTypes[0]
+	mi := &file_demo_demo_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -63,7 +63,7 @@ func (x *Say) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Say.ProtoReflect.Descriptor instead.
 func (*Say) Descriptor() ([]byte, []int) {
-	return file_demo_area_proto_rawDescGZIP(), []int{0}
+	return file_demo_demo_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Say) GetSay() string {
@@ -84,7 +84,7 @@ type Result struct {
 func (x *Result) Reset() {
 	*x = Result{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_demo_area_proto_msgTypes[1]
+		mi := &file_demo_demo_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -97,7 +97,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_demo_area_proto_msgTypes[1]
+	mi := &file_demo_demo_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -110,7 +110,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_demo_area_proto_rawDescGZIP(), []int{1}
+	return file_demo_demo_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Result) GetRes() string {
@@ -120,10 +120,10 @@ func (x *Result) GetRes() string {
 	return ""
 }
 
-var File_demo_area_proto protoreflect.FileDescriptor
+var File_demo_demo_proto protoreflect.FileDescriptor
 
-var file_demo_area_proto_rawDesc = []byte{
-	0x0a, 0x0f, 0x64, 0x65, 0x6d, 0x6f, 0x2f, 0x61, 0x72, 0x65, 0x61, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+var file_demo_demo_proto_rawDesc = []byte{
+	0x0a, 0x0f, 0x64, 0x65, 0x6d, 0x6f, 0x2f, 0x64, 0x65, 0x6d, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x12, 0x06, 0x64, 0x65, 0x61, 0x6c, 0x65, 0x72, 0x1a, 0x39, 0x67, 0x69, 0x74, 0x68, 0x75,
 	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x61, 0x72, 0x67, 0x6f, 0x64, 0x2d, 0x62, 0x6a, 0x2f,
 	0x62, 0x32, 0x63, 0x2d, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2d, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
@@ -141,24 +141,24 @@ var file_demo_area_proto_rawDesc = []byte{
 }
 
 var (
-	file_demo_area_proto_rawDescOnce sync.Once
-	file_demo_area_proto_rawDescData = file_demo_area_proto_rawDesc
+	file_demo_demo_proto_rawDescOnce sync.Once
+	file_demo_demo_proto_rawDescData = file_demo_demo_proto_rawDesc
 )
 
-func file_demo_area_proto_rawDescGZIP() []byte {
-	file_demo_area_proto_rawDescOnce.Do(func() {
-		file_demo_area_proto_rawDescData = protoimpl.X.CompressGZIP(file_demo_area_proto_rawDescData)
+func file_demo_demo_proto_rawDescGZIP() []byte {
+	file_demo_demo_proto_rawDescOnce.Do(func() {
+		file_demo_demo_proto_rawDescData = protoimpl.X.CompressGZIP(file_demo_demo_proto_rawDescData)
 	})
-	return file_demo_area_proto_rawDescData
+	return file_demo_demo_proto_rawDescData
 }
 
-var file_demo_area_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_demo_area_proto_goTypes = []interface{}{
+var file_demo_demo_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_demo_demo_proto_goTypes = []interface{}{
 	(*Say)(nil),             // 0: dealer.Say
 	(*Result)(nil),          // 1: dealer.Result
 	(*common.Response)(nil), // 2: common.Response
 }
-var file_demo_area_proto_depIdxs = []int32{
+var file_demo_demo_proto_depIdxs = []int32{
 	0, // 0: dealer.Area.Hello:input_type -> dealer.Say
 	2, // 1: dealer.Area.Hello:output_type -> common.Response
 	1, // [1:2] is the sub-list for method output_type
@@ -168,13 +168,13 @@ var file_demo_area_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_demo_area_proto_init() }
-func file_demo_area_proto_init() {
-	if File_demo_area_proto != nil {
+func init() { file_demo_demo_proto_init() }
+func file_demo_demo_proto_init() {
+	if File_demo_demo_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_demo_area_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_demo_demo_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Say); i {
 			case 0:
 				return &v.state
@@ -186,7 +186,7 @@ func file_demo_area_proto_init() {
 				return nil
 			}
 		}
-		file_demo_area_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_demo_demo_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Result); i {
 			case 0:
 				return &v.state
@@ -203,18 +203,18 @@ func file_demo_area_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_demo_area_proto_rawDesc,
+			RawDescriptor: file_demo_demo_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_demo_area_proto_goTypes,
-		DependencyIndexes: file_demo_area_proto_depIdxs,
-		MessageInfos:      file_demo_area_proto_msgTypes,
+		GoTypes:           file_demo_demo_proto_goTypes,
+		DependencyIndexes: file_demo_demo_proto_depIdxs,
+		MessageInfos:      file_demo_demo_proto_msgTypes,
 	}.Build()
-	File_demo_area_proto = out.File
-	file_demo_area_proto_rawDesc = nil
-	file_demo_area_proto_goTypes = nil
-	file_demo_area_proto_depIdxs = nil
+	File_demo_demo_proto = out.File
+	file_demo_demo_proto_rawDesc = nil
+	file_demo_demo_proto_goTypes = nil
+	file_demo_demo_proto_depIdxs = nil
 }
