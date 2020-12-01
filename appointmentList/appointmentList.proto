@@ -9,7 +9,7 @@ service AppointmentList {
 
 
 message SmsCond{
-uint32 sendInterval = 1;
+uint32 timeOut = 1;
 }
 message Response {
   string msg = 1;
