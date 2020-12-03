@@ -15,8 +15,10 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+.idea/*
 /gen_log/*
 /log/*
 /gen_latest_log
 /latest_log
+/go.sum
 /docs
