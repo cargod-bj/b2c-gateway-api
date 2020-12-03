@@ -7,7 +7,6 @@ service AppointmentList {
   rpc GetListForSMS(SmsCond) returns (Response) {}
 }
 
-
 message SmsCond{
 uint32 sendInterval = 1;
 }
