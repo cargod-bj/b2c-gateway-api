@@ -13,4 +13,5 @@ service PayCallback {
 message NoticeDTO {
   uint64   paymentNo = 1;
   uint32   status = 2;
+
 }
