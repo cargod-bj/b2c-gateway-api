@@ -11,6 +11,6 @@ service PayCallback {
   rpc Notice(NoticeDTO) returns (common.Response) {}
 }
 message NoticeDTO {
-  uint64   payId = 1;
+  uint64   paymentNo = 1;
   uint32   status = 2;
 }
