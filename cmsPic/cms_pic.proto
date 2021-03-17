@@ -19,6 +19,6 @@ message CmsPicDTOList {
 }
 message CmsPicDTO {
   uint64   id = 1;
-  uint32   nickName = 2;
-  uint32   userName = 3;
+  string   nickName = 2;
+  string   userName = 3;
 }
