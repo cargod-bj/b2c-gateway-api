@@ -21,4 +21,5 @@ message CmsPicDTO {
   uint64   id = 1;
   string   nickName = 2;
   string   userName = 3;
+  repeated uint64   storeIds = 4;
 }
