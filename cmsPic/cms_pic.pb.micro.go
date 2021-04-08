@@ -44,6 +44,7 @@ func NewCmsPicEndpoints() []*api.Endpoint {
 
 type CmsPicService interface {
 	GetPicInfo(ctx context.Context, in *CmsCondDTO, opts ...client.CallOption) (*common.Response, error)
+	GetUsersByStoreAndRole(ctx context.Context, in *StoreRoleReq, opts ...client.CallOption) (*common.Response, error)
 }
 
 type cmsPicService struct {
@@ -68,15 +69,27 @@ func (c *cmsPicService) GetPicInfo(ctx context.Context, in *CmsCondDTO, opts ...
 	return out, nil
 }
 
+func (c *cmsPicService) GetUsersByStoreAndRole(ctx context.Context, in *StoreRoleReq, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "CmsPic.GetUsersByStoreAndRole", in)
+	out := new(common.Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for CmsPic service
 
 type CmsPicHandler interface {
 	GetPicInfo(context.Context, *CmsCondDTO, *common.Response) error
+	GetUsersByStoreAndRole(context.Context, *StoreRoleReq, *common.Response) error
 }
 
 func RegisterCmsPicHandler(s server.Server, hdlr CmsPicHandler, opts ...server.HandlerOption) error {
 	type cmsPic interface {
 		GetPicInfo(ctx context.Context, in *CmsCondDTO, out *common.Response) error
+		GetUsersByStoreAndRole(ctx context.Context, in *StoreRoleReq, out *common.Response) error
 	}
 	type CmsPic struct {
 		cmsPic
@@ -91,4 +104,8 @@ type cmsPicHandler struct {
 
 func (h *cmsPicHandler) GetPicInfo(ctx context.Context, in *CmsCondDTO, out *common.Response) error {
 	return h.CmsPicHandler.GetPicInfo(ctx, in, out)
+}
+
+func (h *cmsPicHandler) GetUsersByStoreAndRole(ctx context.Context, in *StoreRoleReq, out *common.Response) error {
+	return h.CmsPicHandler.GetUsersByStoreAndRole(ctx, in, out)
 }
