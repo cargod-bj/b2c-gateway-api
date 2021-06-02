@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package algoliaSync;
+import "github.com/cargod-bj/b2c-proto-common/common/common.proto";
+
+option go_package = "github.com/cargod-bj/b2c-gateway-api/algoliaSync";
+/**
+*推送数据到algolia
+*/
+service AlgoliaSync {
+  //  推送carlist
+  rpc SyncCarList(common.EmptyDto) returns (common.Response) {}
+  //  推送失败重试
+  rpc RetrySyncCar(common.EmptyDto) returns (common.Response) {}
+}
