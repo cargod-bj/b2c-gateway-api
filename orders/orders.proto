@@ -3,7 +3,7 @@ syntax = "proto3";
 package orders;
 import "github.com/cargod-bj/b2c-proto-common/common/common.proto";
 
-option go_package = "github.com/cargod-bj/b2c-gateway-api/Ordersq";
+option go_package = "github.com/cargod-bj/b2c-gateway-api/orders";
 /**
 *订单付款和退款记录
  */
