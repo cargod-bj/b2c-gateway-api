@@ -20,3 +20,7 @@ message MessageAreaDTO {
   string   buttonText = 6;
   string   jumpUrl = 7;
 }
+
+message MessageAreaLIST {
+  repeated MessageAreaDTO   list  = 1;
+}
