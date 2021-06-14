@@ -45,6 +45,7 @@ func NewZohoSyncEndpoints() []*api.Endpoint {
 type ZohoSyncService interface {
 	SyncLeads(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
 	AddAppoint(ctx context.Context, in *ZohoB2CLead, opts ...client.CallOption) (*common.Response, error)
+	SyncLeadsFromDB(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
 }
 
 type zohoSyncService struct {
@@ -79,17 +80,29 @@ func (c *zohoSyncService) AddAppoint(ctx context.Context, in *ZohoB2CLead, opts 
 	return out, nil
 }
 
+func (c *zohoSyncService) SyncLeadsFromDB(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "ZohoSync.SyncLeadsFromDB", in)
+	out := new(common.Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for ZohoSync service
 
 type ZohoSyncHandler interface {
 	SyncLeads(context.Context, *common.EmptyDto, *common.Response) error
 	AddAppoint(context.Context, *ZohoB2CLead, *common.Response) error
+	SyncLeadsFromDB(context.Context, *common.EmptyDto, *common.Response) error
 }
 
 func RegisterZohoSyncHandler(s server.Server, hdlr ZohoSyncHandler, opts ...server.HandlerOption) error {
 	type zohoSync interface {
 		SyncLeads(ctx context.Context, in *common.EmptyDto, out *common.Response) error
 		AddAppoint(ctx context.Context, in *ZohoB2CLead, out *common.Response) error
+		SyncLeadsFromDB(ctx context.Context, in *common.EmptyDto, out *common.Response) error
 	}
 	type ZohoSync struct {
 		zohoSync
@@ -108,4 +121,8 @@ func (h *zohoSyncHandler) SyncLeads(ctx context.Context, in *common.EmptyDto, ou
 
 func (h *zohoSyncHandler) AddAppoint(ctx context.Context, in *ZohoB2CLead, out *common.Response) error {
 	return h.ZohoSyncHandler.AddAppoint(ctx, in, out)
+}
+
+func (h *zohoSyncHandler) SyncLeadsFromDB(ctx context.Context, in *common.EmptyDto, out *common.Response) error {
+	return h.ZohoSyncHandler.SyncLeadsFromDB(ctx, in, out)
 }
