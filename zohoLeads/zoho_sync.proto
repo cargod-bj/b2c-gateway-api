@@ -26,7 +26,7 @@ message ZohoB2CLead {
 
 message GenZohoLeadInfosAndDoSyncReq {
   uint64 id = 1;
-  uint64 serId = 2;
+  uint64 userId = 2;
   string contactNo = 3;
   string email = 4;
   string leadName = 5;
