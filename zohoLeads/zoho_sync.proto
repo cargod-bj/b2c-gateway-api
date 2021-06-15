@@ -11,6 +11,7 @@ service ZohoSync {
   rpc SyncLeads(common.EmptyDto) returns (common.Response) {}
   rpc AddAppoint(ZohoB2CLead) returns (common.Response) {}
   rpc SyncLeadsFromDB(common.EmptyDto) returns (common.Response) {}
+  rpc GenZohoLeadInfosAndDoSync(GenZohoLeadInfosAndDoSyncReq) returns (common.Response) {}
 }
 message ZohoB2CLead {
   string   leadType = 1;
@@ -22,4 +23,8 @@ message ZohoB2CLead {
   string   appointmentCar = 7;
   string   appointmentSlot = 8;
   string   appointmentLocation = 9;
+}
+
+message GenZohoLeadInfosAndDoSyncReq {
+  uint64 id = 1;
 }
