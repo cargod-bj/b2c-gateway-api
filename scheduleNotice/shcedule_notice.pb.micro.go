@@ -46,6 +46,15 @@ type ScheduleNoticeService interface {
 	ScheduleNotice(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
 	ScheduleReport2DingTalkForCarMaintenanceInfo(ctx context.Context, in *common.Page, opts ...client.CallOption) (*common.Response, error)
 	ScheduleOrderCancelledSms(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
+	//car service
+	CarUpdateBrandModelTask(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
+	CarUpdateEnumConfig(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
+	CarUpdateCarListStatistical(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
+	CarKeywordsCacheRefresh(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
+	CarUpdateCarValuationGuidesSync(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
+	CarPublishActiveCarCampaign(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
+	CarUpdateCarLibSync(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
+	CarValidateCarWarranty(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
 }
 
 type scheduleNoticeService struct {
@@ -90,12 +99,101 @@ func (c *scheduleNoticeService) ScheduleOrderCancelledSms(ctx context.Context, i
 	return out, nil
 }
 
+func (c *scheduleNoticeService) CarUpdateBrandModelTask(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "ScheduleNotice.CarUpdateBrandModelTask", in)
+	out := new(common.Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *scheduleNoticeService) CarUpdateEnumConfig(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "ScheduleNotice.CarUpdateEnumConfig", in)
+	out := new(common.Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *scheduleNoticeService) CarUpdateCarListStatistical(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "ScheduleNotice.CarUpdateCarListStatistical", in)
+	out := new(common.Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *scheduleNoticeService) CarKeywordsCacheRefresh(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "ScheduleNotice.CarKeywordsCacheRefresh", in)
+	out := new(common.Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *scheduleNoticeService) CarUpdateCarValuationGuidesSync(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "ScheduleNotice.CarUpdateCarValuationGuidesSync", in)
+	out := new(common.Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *scheduleNoticeService) CarPublishActiveCarCampaign(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "ScheduleNotice.CarPublishActiveCarCampaign", in)
+	out := new(common.Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *scheduleNoticeService) CarUpdateCarLibSync(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "ScheduleNotice.CarUpdateCarLibSync", in)
+	out := new(common.Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *scheduleNoticeService) CarValidateCarWarranty(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "ScheduleNotice.CarValidateCarWarranty", in)
+	out := new(common.Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for ScheduleNotice service
 
 type ScheduleNoticeHandler interface {
 	ScheduleNotice(context.Context, *common.EmptyDto, *common.Response) error
 	ScheduleReport2DingTalkForCarMaintenanceInfo(context.Context, *common.Page, *common.Response) error
 	ScheduleOrderCancelledSms(context.Context, *common.EmptyDto, *common.Response) error
+	//car service
+	CarUpdateBrandModelTask(context.Context, *common.EmptyDto, *common.Response) error
+	CarUpdateEnumConfig(context.Context, *common.EmptyDto, *common.Response) error
+	CarUpdateCarListStatistical(context.Context, *common.EmptyDto, *common.Response) error
+	CarKeywordsCacheRefresh(context.Context, *common.EmptyDto, *common.Response) error
+	CarUpdateCarValuationGuidesSync(context.Context, *common.EmptyDto, *common.Response) error
+	CarPublishActiveCarCampaign(context.Context, *common.EmptyDto, *common.Response) error
+	CarUpdateCarLibSync(context.Context, *common.EmptyDto, *common.Response) error
+	CarValidateCarWarranty(context.Context, *common.EmptyDto, *common.Response) error
 }
 
 func RegisterScheduleNoticeHandler(s server.Server, hdlr ScheduleNoticeHandler, opts ...server.HandlerOption) error {
@@ -103,6 +201,14 @@ func RegisterScheduleNoticeHandler(s server.Server, hdlr ScheduleNoticeHandler, 
 		ScheduleNotice(ctx context.Context, in *common.EmptyDto, out *common.Response) error
 		ScheduleReport2DingTalkForCarMaintenanceInfo(ctx context.Context, in *common.Page, out *common.Response) error
 		ScheduleOrderCancelledSms(ctx context.Context, in *common.EmptyDto, out *common.Response) error
+		CarUpdateBrandModelTask(ctx context.Context, in *common.EmptyDto, out *common.Response) error
+		CarUpdateEnumConfig(ctx context.Context, in *common.EmptyDto, out *common.Response) error
+		CarUpdateCarListStatistical(ctx context.Context, in *common.EmptyDto, out *common.Response) error
+		CarKeywordsCacheRefresh(ctx context.Context, in *common.EmptyDto, out *common.Response) error
+		CarUpdateCarValuationGuidesSync(ctx context.Context, in *common.EmptyDto, out *common.Response) error
+		CarPublishActiveCarCampaign(ctx context.Context, in *common.EmptyDto, out *common.Response) error
+		CarUpdateCarLibSync(ctx context.Context, in *common.EmptyDto, out *common.Response) error
+		CarValidateCarWarranty(ctx context.Context, in *common.EmptyDto, out *common.Response) error
 	}
 	type ScheduleNotice struct {
 		scheduleNotice
@@ -125,4 +231,36 @@ func (h *scheduleNoticeHandler) ScheduleReport2DingTalkForCarMaintenanceInfo(ctx
 
 func (h *scheduleNoticeHandler) ScheduleOrderCancelledSms(ctx context.Context, in *common.EmptyDto, out *common.Response) error {
 	return h.ScheduleNoticeHandler.ScheduleOrderCancelledSms(ctx, in, out)
+}
+
+func (h *scheduleNoticeHandler) CarUpdateBrandModelTask(ctx context.Context, in *common.EmptyDto, out *common.Response) error {
+	return h.ScheduleNoticeHandler.CarUpdateBrandModelTask(ctx, in, out)
+}
+
+func (h *scheduleNoticeHandler) CarUpdateEnumConfig(ctx context.Context, in *common.EmptyDto, out *common.Response) error {
+	return h.ScheduleNoticeHandler.CarUpdateEnumConfig(ctx, in, out)
+}
+
+func (h *scheduleNoticeHandler) CarUpdateCarListStatistical(ctx context.Context, in *common.EmptyDto, out *common.Response) error {
+	return h.ScheduleNoticeHandler.CarUpdateCarListStatistical(ctx, in, out)
+}
+
+func (h *scheduleNoticeHandler) CarKeywordsCacheRefresh(ctx context.Context, in *common.EmptyDto, out *common.Response) error {
+	return h.ScheduleNoticeHandler.CarKeywordsCacheRefresh(ctx, in, out)
+}
+
+func (h *scheduleNoticeHandler) CarUpdateCarValuationGuidesSync(ctx context.Context, in *common.EmptyDto, out *common.Response) error {
+	return h.ScheduleNoticeHandler.CarUpdateCarValuationGuidesSync(ctx, in, out)
+}
+
+func (h *scheduleNoticeHandler) CarPublishActiveCarCampaign(ctx context.Context, in *common.EmptyDto, out *common.Response) error {
+	return h.ScheduleNoticeHandler.CarPublishActiveCarCampaign(ctx, in, out)
+}
+
+func (h *scheduleNoticeHandler) CarUpdateCarLibSync(ctx context.Context, in *common.EmptyDto, out *common.Response) error {
+	return h.ScheduleNoticeHandler.CarUpdateCarLibSync(ctx, in, out)
+}
+
+func (h *scheduleNoticeHandler) CarValidateCarWarranty(ctx context.Context, in *common.EmptyDto, out *common.Response) error {
+	return h.ScheduleNoticeHandler.CarValidateCarWarranty(ctx, in, out)
 }

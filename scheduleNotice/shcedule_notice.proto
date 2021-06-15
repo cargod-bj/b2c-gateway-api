@@ -11,4 +11,13 @@ service ScheduleNotice {
   rpc ScheduleNotice(common.EmptyDto) returns (common.Response) {}
   rpc ScheduleReport2DingTalkForCarMaintenanceInfo(common.Page) returns (common.Response) {}
   rpc ScheduleOrderCancelledSms(common.EmptyDto) returns (common.Response) {}
+  //car service
+  rpc CarUpdateBrandModelTask(common.EmptyDto) returns (common.Response) {}
+  rpc CarUpdateEnumConfig(common.EmptyDto) returns (common.Response) {}
+  rpc CarUpdateCarListStatistical(common.EmptyDto) returns (common.Response) {}
+  rpc CarKeywordsCacheRefresh(common.EmptyDto) returns (common.Response) {}
+  rpc CarUpdateCarValuationGuidesSync(common.EmptyDto) returns (common.Response) {}
+  rpc CarPublishActiveCarCampaign(common.EmptyDto) returns (common.Response) {}
+  rpc CarUpdateCarLibSync(common.EmptyDto) returns (common.Response) {}
+  rpc CarValidateCarWarranty(common.EmptyDto) returns (common.Response) {}
 }
