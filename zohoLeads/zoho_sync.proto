@@ -26,25 +26,4 @@ message ZohoB2CLead {
 
 message GenZohoLeadInfosAndDoSyncReq {
   uint64 id = 1;
-  uint64 userId = 2;
-  string contactNo = 3;
-  string email = 4;
-  string leadName = 5;
-  uint64 leadType  = 6;
-  string source = 7;
-  string channel = 8;
-  string leadOwner = 9;
-  uint64 createTime = 10;
-  string createdBy = 11;
-  string updatedBy = 12;
-  uint64 leadStatus = 13;
-  uint64 leadSubStatus = 14;
-  uint64 updateTime = 15;
-  uint64 isDuplicated = 16;
-  string remarks = 17;
-  string carNo = 18;
-  string model = 19;
-  string carVariant = 20;
-  string carInfo = 21;
-  uint64 isSyncZoho = 22;
 }
