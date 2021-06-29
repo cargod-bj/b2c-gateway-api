@@ -46,6 +46,7 @@ type ScheduleNoticeService interface {
 	ScheduleNotice(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
 	ScheduleReport2DingTalkForCarMaintenanceInfo(ctx context.Context, in *common.Page, opts ...client.CallOption) (*common.Response, error)
 	ScheduleOrderCancelledSms(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
+	ScheduleChangeLeadStatus(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error)
 }
 
 type scheduleNoticeService struct {
@@ -90,12 +91,23 @@ func (c *scheduleNoticeService) ScheduleOrderCancelledSms(ctx context.Context, i
 	return out, nil
 }
 
+func (c *scheduleNoticeService) ScheduleChangeLeadStatus(ctx context.Context, in *common.EmptyDto, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "ScheduleNotice.ScheduleChangeLeadStatus", in)
+	out := new(common.Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for ScheduleNotice service
 
 type ScheduleNoticeHandler interface {
 	ScheduleNotice(context.Context, *common.EmptyDto, *common.Response) error
 	ScheduleReport2DingTalkForCarMaintenanceInfo(context.Context, *common.Page, *common.Response) error
 	ScheduleOrderCancelledSms(context.Context, *common.EmptyDto, *common.Response) error
+	ScheduleChangeLeadStatus(context.Context, *common.EmptyDto, *common.Response) error
 }
 
 func RegisterScheduleNoticeHandler(s server.Server, hdlr ScheduleNoticeHandler, opts ...server.HandlerOption) error {
@@ -103,6 +115,7 @@ func RegisterScheduleNoticeHandler(s server.Server, hdlr ScheduleNoticeHandler, 
 		ScheduleNotice(ctx context.Context, in *common.EmptyDto, out *common.Response) error
 		ScheduleReport2DingTalkForCarMaintenanceInfo(ctx context.Context, in *common.Page, out *common.Response) error
 		ScheduleOrderCancelledSms(ctx context.Context, in *common.EmptyDto, out *common.Response) error
+		ScheduleChangeLeadStatus(ctx context.Context, in *common.EmptyDto, out *common.Response) error
 	}
 	type ScheduleNotice struct {
 		scheduleNotice
@@ -125,4 +138,8 @@ func (h *scheduleNoticeHandler) ScheduleReport2DingTalkForCarMaintenanceInfo(ctx
 
 func (h *scheduleNoticeHandler) ScheduleOrderCancelledSms(ctx context.Context, in *common.EmptyDto, out *common.Response) error {
 	return h.ScheduleNoticeHandler.ScheduleOrderCancelledSms(ctx, in, out)
+}
+
+func (h *scheduleNoticeHandler) ScheduleChangeLeadStatus(ctx context.Context, in *common.EmptyDto, out *common.Response) error {
+	return h.ScheduleNoticeHandler.ScheduleChangeLeadStatus(ctx, in, out)
 }

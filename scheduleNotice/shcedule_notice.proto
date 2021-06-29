@@ -11,4 +11,5 @@ service ScheduleNotice {
   rpc ScheduleNotice(common.EmptyDto) returns (common.Response) {}
   rpc ScheduleReport2DingTalkForCarMaintenanceInfo(common.Page) returns (common.Response) {}
   rpc ScheduleOrderCancelledSms(common.EmptyDto) returns (common.Response) {}
+  rpc ScheduleChangeLeadStatus(common.EmptyDto) returns (common.Response) {}
 }
