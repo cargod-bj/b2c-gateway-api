@@ -25,6 +25,7 @@ message MessageAreaDTO {
 
 message ConfigRequest {
   repeated string keyWord = 1;
+  uint64 Type = 2;
 }
 
 message ConfigResponse {
