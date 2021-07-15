@@ -44,6 +44,8 @@ func NewSystemServiceEndpoints() []*api.Endpoint {
 
 type SystemService interface {
 	GetMessageArea(ctx context.Context, in *MessageAreaDTO, opts ...client.CallOption) (*common.Response, error)
+	//根据KEY后去config信息
+	GetConfigByKeys(ctx context.Context, in *ConfigRequest, opts ...client.CallOption) (*common.Response, error)
 }
 
 type systemService struct {
@@ -68,15 +70,28 @@ func (c *systemService) GetMessageArea(ctx context.Context, in *MessageAreaDTO, 
 	return out, nil
 }
 
+func (c *systemService) GetConfigByKeys(ctx context.Context, in *ConfigRequest, opts ...client.CallOption) (*common.Response, error) {
+	req := c.c.NewRequest(c.name, "SystemService.GetConfigByKeys", in)
+	out := new(common.Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for SystemService service
 
 type SystemServiceHandler interface {
 	GetMessageArea(context.Context, *MessageAreaDTO, *common.Response) error
+	//根据KEY后去config信息
+	GetConfigByKeys(context.Context, *ConfigRequest, *common.Response) error
 }
 
 func RegisterSystemServiceHandler(s server.Server, hdlr SystemServiceHandler, opts ...server.HandlerOption) error {
 	type systemService interface {
 		GetMessageArea(ctx context.Context, in *MessageAreaDTO, out *common.Response) error
+		GetConfigByKeys(ctx context.Context, in *ConfigRequest, out *common.Response) error
 	}
 	type SystemService struct {
 		systemService
@@ -91,4 +106,8 @@ type systemServiceHandler struct {
 
 func (h *systemServiceHandler) GetMessageArea(ctx context.Context, in *MessageAreaDTO, out *common.Response) error {
 	return h.SystemServiceHandler.GetMessageArea(ctx, in, out)
+}
+
+func (h *systemServiceHandler) GetConfigByKeys(ctx context.Context, in *ConfigRequest, out *common.Response) error {
+	return h.SystemServiceHandler.GetConfigByKeys(ctx, in, out)
 }
